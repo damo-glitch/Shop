@@ -1,2 +1,4 @@
-package org.dreamdevwork.shop.controllers;public class ProduitController {
+package org.dreamdevwork.shop.controllers;
+
+public class ProductController {
 }

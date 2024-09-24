@@ -20,7 +20,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("${api.prefix}categories")
+@RequestMapping("/api/v1/categories")
 public class CategoryController {
     private final ICategoryService categoryService;
 
@@ -29,7 +29,7 @@ public class CategoryController {
     public ResponseEntity<ApiResponse> getAllCategories(){
         try {
             List<Category> categories = categoryService.getAllCategories();
-            return ResponseEntity.ok(new ApiResponse("Found", categories));
+            return ResponseEntity.ok(new ApiResponse("Success", categories));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
@@ -39,7 +39,7 @@ public class CategoryController {
     public ResponseEntity<ApiResponse> getCategoryById(@PathVariable Long id){
         try{
             Category category = categoryService.getCategoryById(id);
-            return ResponseEntity.ok(new ApiResponse("Found", category));
+            return ResponseEntity.ok(new ApiResponse("Success", category));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
@@ -48,7 +48,7 @@ public class CategoryController {
     public ResponseEntity<ApiResponse> getCategoryByName(@PathVariable String name){
         try{
             Category category = categoryService.getCategoryByName(name);
-            return ResponseEntity.ok(new ApiResponse("Found", category));
+            return ResponseEntity.ok(new ApiResponse("Success", category));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
